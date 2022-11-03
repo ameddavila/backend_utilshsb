@@ -21,7 +21,7 @@ const LoginPage = () => {
         <div className={containerClassName}>
             <div className="flex flex-column justify-content-center">
                 <div className="flex card-container">
-                    <img src={`${contextPath}/layout/images/logo-${layoutConfig.colorScheme === 'light' ? 'dark' : 'white'}.svg`} alt="Sakai logo" className="mb-5 w-6rem flex-shrink-0" />
+                    <Image src={`${contextPath}/layout/images/logo-${layoutConfig.colorScheme === 'light' ? 'dark' : 'white'}.svg`} alt="Sakai logo" className="mb-5 w-6rem flex-shrink-0" />
                     <div className="flex flex-column card-container">
                         <div className="flex align-items-right justify-content-right text-xl font-bold border-round">HOSPITAL SANTA BÁRBARA</div>
                         <div className="flex align-items-right justify-content-right text-base font-light border-round mr-2">SUCRE-BOLIVIA</div>
