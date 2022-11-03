@@ -8,6 +8,7 @@ import { Password } from 'primereact/password';
 import { LayoutContext } from '../../../layout/context/layoutcontext';
 import { InputText } from 'primereact/inputtext';
 import { classNames } from 'primereact/utils';
+import { Image } from 'primereact/image';
 
 const LoginPage = () => {
     const [password, setPassword] = useState('');

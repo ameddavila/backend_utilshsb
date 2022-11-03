@@ -4,6 +4,7 @@ import { Card } from 'primereact/card';
 import { Timeline } from 'primereact/timeline';
 import { classNames } from 'primereact/utils';
 import React from 'react';
+import { Image } from 'primereact/image';
 
 const TimelineDemo = () => {
     const customEvents = [

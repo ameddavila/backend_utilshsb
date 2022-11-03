@@ -4,6 +4,7 @@ import React from 'react';
 import AppConfig from '../../../layout/AppConfig';
 import { Button } from 'primereact/button';
 import Link from 'next/link';
+import { Image } from 'primereact/image';
 
 const NotFoundPage = () => {
     const contextPath = getConfig().publicRuntimeConfig.contextPath;
