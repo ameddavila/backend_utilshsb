@@ -50,18 +50,18 @@ const CarouselDemo = () => {
          
           </div>
           <div className="w-full block font-bold text-center border-round">
-            <div class="p-1rem yellow-container">
-              <div class="block font-bold text-left m-1">
+            <div className="p-1rem yellow-container">
+              <div className="block font-bold text-left m-1">
                 <span className='text-500 font-medium '>
                   {fichas.Descripcion}
                 </span>
               </div>
-              <div class="block font-bold text-left m-1">
+              <div className="block font-bold text-left m-1">
                 <span className='text-500 font-medium '>
                   {fichas.MEDICO}
                 </span>
               </div>
-              <div class="block font-bold text-left m-1">
+              <div className="block font-bold text-left m-1">
                 <span className='text-500 font-medium '>
                   FICHAS DISPONIBLES: {fichas.cantidad}
                 </span>
