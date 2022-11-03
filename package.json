@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
     "build": "next build",
-    "export": "next export"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@fullcalendar/core": "^5.11.2",
@@ -27,7 +28,6 @@
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
-    "cypress": "^10.0.3",
     "eslint": "8.21.0",
     "eslint-config-next": "12.2.4",
     "prettier": "2.7.1",
