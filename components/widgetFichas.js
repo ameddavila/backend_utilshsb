@@ -28,7 +28,7 @@ const CarouselDemo = () => {
       breakpoint: '360px',
       numVisible: 1,
       numScroll: 1,
-     verticalViewPortHeight:100
+      verticalViewPortHeight:'100px'
     }
   ];
 
