@@ -83,7 +83,7 @@ const CarouselDemo = () => {
           numVisible={5}
           numScroll={1}
           orientation="vertical"
-          verticalViewPortHeight="500px"
+          verticalViewPortHeight="300px"
           responsiveOptions={responsiveOptions}
           className="custom-carousel" circular
           autoplayInterval={10000}
