@@ -40,7 +40,6 @@ const CarouselDemo = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const productTemplate = (fichas) => {
-    console.log(fichas);
     return (
       <div className="p-1rem">
         <div className="card-container blue-container flex align-items-center justify-content-start">
