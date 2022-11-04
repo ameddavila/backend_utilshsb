@@ -79,7 +79,7 @@ const CarouselDemo = () => {
     );
   }
   return (
-    <div className="carousel-demo">
+    <div className="p-carousel">
       <div className="card">
         <Carousel value={fichas}
           numVisible={5}
