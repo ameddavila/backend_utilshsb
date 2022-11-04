@@ -2,9 +2,9 @@
 const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
-  basePath: process.env.NODE_ENV === 'production' ? '/' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '' : '',
     publicRuntimeConfig: {
-        contextPath: process.env.NODE_ENV === 'production' ? '/' : ''
+        contextPath: process.env.NODE_ENV === 'production' ? '' : ''
         //backendUrl: `${process.env.VITE_BACKEND_URL}/api`
        // uploadPath: process.env.NODE_ENV === 'production' ? '/sakai-react/upload.php' : '/api/upload'
     }
