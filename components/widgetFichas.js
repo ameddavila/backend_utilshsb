@@ -24,6 +24,11 @@ const CarouselDemo = () => {
       numVisible: 1,
       numScroll: 1
     }
+    {
+      breakpoint: '280px',
+      numVisible: 1,
+      numScroll: 1
+    }
   ];
 
   useEffect(() => {
@@ -81,7 +86,7 @@ const CarouselDemo = () => {
           verticalViewPortHeight="500px"
           responsiveOptions={responsiveOptions}
           className="custom-carousel" circular
-          autoplayInterval={5000}
+          autoplayInterval={10000}
           showNavigators={false}
           showIndicators={false}
           itemTemplate={productTemplate}
