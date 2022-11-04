@@ -4,10 +4,10 @@ export default function Home() {
   return (
     <div ClassName="card">
       <div ClassName="formgrid grid">
-        <div ClassName="field col-9">
+        <div ClassName="field col">
           <WidgetBuscador></WidgetBuscador>
         </div>
-        <div ClassName="field col-3">
+        <div ClassName="field col">
           <WidgetFichas></WidgetFichas>
         </div>
       </div>
