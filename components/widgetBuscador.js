@@ -123,7 +123,7 @@ const WidgetBuscador = () => {
       <div className="col-12">
         <div className="card">
           <h5>SEGURIDAD SOCIAL A CORTO PLAZO (SSCP)
-            INFORMACIÓN DE LOS ASEGURADOS, PERTENECIENTES A LOS ENTES GESTORES</h5>
+            INFORMACIÓN DE LOS ASEGURADOS, PERTENECIENTES A LOS ENTES GESTORES (BASE DE DATOS PRUEBA NO ACTUALIZADO)</h5>
           <DataTable value={cortoPlazo}
             paginator
             className="p-datatable-customers bg-blue-500"
