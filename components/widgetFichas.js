@@ -21,13 +21,14 @@ const CarouselDemo = () => {
     },
     {
       breakpoint: '480px',
-      numVisible: 1,
-      numScroll: 1
+      numVisible: 2,
+      numScroll: 2
     }
     {
-      breakpoint: '280px',
+      breakpoint: '360px',
       numVisible: 1,
-      numScroll: 1
+      numScroll: 1,
+     verticalViewPortHeight:100
     }
   ];
 
