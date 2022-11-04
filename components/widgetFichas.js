@@ -70,13 +70,8 @@ const CarouselDemo = () => {
           </div>
         </div>
       </div>
-
-
-
-
     );
   }
-
   return (
     <div className="carousel-demo">
       <div className="card">
