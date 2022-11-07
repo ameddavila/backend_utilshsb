@@ -9,12 +9,13 @@ const AppMenu = () => {
     const model = [
         {
             label: 'Inicio',
-            items: [ 
-                     { label: 'SEGUROS A CORTO PLAZO', icon: 'pi pi-list', to: '/' },
-                     { label: 'DASHBOARD FICHAS', icon: 'pi pi-chart-bar', to: '/dasboard'},
-                     {label: 'Login', icon: 'pi pi-fw pi-sign-in', to: '/auth/login'}
-                   ],
-    
+            items: [
+                { label: 'SEGUROS A CORTO PLAZO', icon: 'pi pi-list', to: '/' },
+                { label: 'FICHAS', icon: 'pi pi-chart-bar', to: '/fichasmain' },
+                { label: 'DISPONIBILIDAD CAMAS', icon: 'pi pi-chart-bar', to: '/estadistica' },
+                { label: 'Login', icon: 'pi pi-fw pi-sign-in', to: '/auth/login' }
+            ],
+
         },
         {
             label: 'Menú Privado',
@@ -24,14 +25,14 @@ const AppMenu = () => {
                     icon: 'pi pi-fw pi-bookmark',
                     items: [
                         { label: 'Producción', icon: 'pi pi-fw pi-bookmark' },
-                        { label: 'Internacion Convenios', icon: 'pi pi-fw pi-bookmark'}                       
+                        { label: 'Internacion Convenios', icon: 'pi pi-fw pi-bookmark' }
                     ]
                 },
                 {
                     label: 'Admisiones',
                     icon: 'pi pi-fw pi-bookmark',
                     items: [
-                        { label: 'Reporte Fichas', icon: 'pi pi-fw pi-bookmark' }                   
+                        { label: 'Reporte Fichas', icon: 'pi pi-fw pi-bookmark' }
                     ]
                 }
             ]
@@ -45,7 +46,7 @@ const AppMenu = () => {
                     return !item.seperator ? <AppMenuitem item={item} root={true} index={i} key={item.label} /> : <li className="menu-separator"></li>;
                 })}
 
-                
+
             </ul>
         </MenuProvider>
     );
