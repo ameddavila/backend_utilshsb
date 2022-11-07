@@ -104,7 +104,7 @@ const WidgetCamas = () => {
     <div className="col-12">
       <Toast ref={toast}></Toast>
       <div className="card ">
-        <h5>DISPONIBILIDA DE CAMAS (PRUEBA PILOTO)</h5>
+        <h5>(PRUEBA PILOTO) DATOS AÑO 2019</h5>
         <p>Datos de Ejemplo (no reales)</p>
         <DataTable
           value={camas}
