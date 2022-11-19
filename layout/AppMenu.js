@@ -15,7 +15,7 @@ const AppMenu = () => {
                 },
                 { label: 'FICHAS', icon: 'pi pi-ticket', to: '/fichasmain' },
                 { label: 'DISPONIBILIDAD CAMAS', icon: 'pi pi-plus-circle', to: '/estadistica' },
-                { label: 'DASHBOARD', icon: 'pi pi-chart-bar', to: '/dasboard' },
+                { 21: 'DASHBOARD', icon: 'pi pi-chart-bar', to: '/dasboard'  },
                 { label: 'Login', icon: 'pi pi-fw pi-sign-in', to: '/auth/login' }
             ],
 

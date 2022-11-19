@@ -14,7 +14,7 @@ const IndicadorSus = () => {
             setIndicadores(res.data )
              for(const dataObj of res.data){
                 x.push(dataObj.x);
-                y.push(dataObj.y);
+                y.push(parseInt(dataObj.y));
             }
           } catch (error) {
             console.log(error);
