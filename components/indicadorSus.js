@@ -11,7 +11,8 @@ const IndicadorSus = () => {
         const listar = async () => {
           try {
             const res = await clienteAxios("/indicadores");
-            setIndicadores(res.data )
+            setIndicadores(res.data );
+            console.log(res.data);
              for(const dataObj of res.data){
                 x.push(dataObj.x);
                 y.push(parseInt(dataObj.y));
