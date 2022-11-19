@@ -68,7 +68,8 @@ const WidgetBuscador = () => {
 
   const renderHeader = () => {
     return (
-         <div className="card-container purple-container ">
+      <div className="card">
+         <div className="flex justify-content-center flex-wrap card-container indigo-container">
           <span className="p-input-icon-left pr-1">
             <i className="pi pi-search" />
             <InputText
@@ -120,6 +121,7 @@ const WidgetBuscador = () => {
               placeholder="CARNET DE IDENTIDAD"
             />
           </span>
+        </div>
         </div>
     );
   };
