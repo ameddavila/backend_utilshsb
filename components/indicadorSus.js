@@ -4,31 +4,26 @@ import clienteAxios from "../config/clienteAxios";
 import "chart.js/auto";
 
 const IndicadorSus = () => {
-    const[indicadores, setIndicadores]=useState([])
-    let x = [];
-    let y = [];
-
-    useEffect(() => {
-        const listar = async () => {
-          try {
-            const res = await clienteAxios("/indicadores");
-            setIndicadores(res.data );
-            console.log(res.data);
-             for(const dataObj of res.data){
-                x.push(dataObj.x);
-                y.push(parseInt(dataObj.y));
+    const [basicData] = useState({
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [
+            {
+                label: 'My First dataset',
+                backgroundColor: '#42A5F5',
+                data: [65, 59, 80, 81, 56, 55, 40]
+            },
+            {
+                label: 'My Second dataset',
+                backgroundColor: '#FFA726',
+                data: [28, 48, 40, 19, 86, 27, 90]
             }
-          } catch (error) {
-            console.log(error);
-          }
-        };
-        listar();
-      },[]);
+        ]
+    });
 
-      const [multiAxisData] = useState({
-        labels: ['prueba', 'prueba2'],
+    const [multiAxisData] = useState({
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [{
-            label: 'Gestión 2022',
+            label: 'Dataset 1',
             backgroundColor: [
                 '#EC407A',
                 '#AB47BC',
@@ -39,114 +34,242 @@ const IndicadorSus = () => {
                 '#26A69A'
             ],
             yAxisID: 'y',
-            data: [20,30]
+            data: [65, 59, 80, 81, 56, 55, 10]
+        }, {
+            label: 'Dataset 2',
+            backgroundColor: '#78909C',
+            yAxisID: 'y1',
+            data: [28, 48, 40, 19, 86, 27, 90]
         }]
     });
-//inicio
-const getLightTheme = () => {
-    let horizontalOptions = {
-        indexAxis: 'y',
-        maintainAspectRatio: false,
-        aspectRatio: .8,
-        plugins: {
-            legend: {
-                labels: {
-                    color: '#495057'
-                }
-            }
-        },
-        scales: {
-            x: {
-                ticks: {
-                    color: '#495057'
-                },
-                grid: {
-                    color: '#ebedef'
-                }
-            },
-            y: {
-                ticks: {
-                    color: '#495057'
-                },
-                grid: {
-                    color: '#ebedef'
-                }
-            }
-        }
-    };
-    let multiAxisOptions = {
-        maintainAspectRatio: false,
-        aspectRatio: .8,
-        plugins: {
-            legend: {
-                labels: {
-                    color: '#495057'
-                }
-            },
-            tooltips: {
-                mode: 'index',
-                intersect: true
-            }
-        },
-        scales: {
-            x: {
-                ticks: {
-                    color: '#495057'
-                },
-                grid: {
-                    color: '#ebedef'
-                }
-            },
-            y: {
-                type: 'linear',
-                display: true,
-                position: 'left',
-                ticks: {
-                    min: 0,
-                    max: 100,
-                    color: '#495057'
-                },
-                grid: {
-                    color: '#ebedef'
-                }
-            },
-            y1: {
-                type: 'linear',
-                display: true,
-                position: 'right',
-                grid: {
-                    drawOnChartArea: false,
-                    color: '#ebedef'
-                },
-                ticks: {
-                    min: 0,
-                    max: 100,
-                    color: '#495057'
-                }
-            }
-        }
-    };
 
-    return {
-        horizontalOptions,
-        multiAxisOptions
+    const [stackedData] = useState({
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            type: 'bar',
+            label: 'Dataset 1',
+            backgroundColor: '#42A5F5',
+            data: [
+                50,
+                25,
+                12,
+                48,
+                90,
+                76,
+                42
+            ]
+        }, {
+            type: 'bar',
+            label: 'Dataset 2',
+            backgroundColor: '#66BB6A',
+            data: [
+                21,
+                84,
+                24,
+                75,
+                37,
+                65,
+                34
+            ]
+        }, {
+            type: 'bar',
+            label: 'Dataset 3',
+            backgroundColor: '#FFA726',
+            data: [
+                41,
+                52,
+                24,
+                74,
+                23,
+                21,
+                32
+            ]
+        }]
+    });
+
+    const getLightTheme = () => {
+        let basicOptions = {
+            maintainAspectRatio: false,
+            aspectRatio: .8,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#495057'
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: '#495057'
+                    },
+                    grid: {
+                        color: '#ebedef'
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: '#495057'
+                    },
+                    grid: {
+                        color: '#ebedef'
+                    }
+                }
+            }
+        };
+
+        let horizontalOptions = {
+            indexAxis: 'y',
+            maintainAspectRatio: false,
+            aspectRatio: .8,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#495057'
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: '#495057'
+                    },
+                    grid: {
+                        color: '#ebedef'
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: '#495057'
+                    },
+                    grid: {
+                        color: '#ebedef'
+                    }
+                }
+            }
+        };
+
+        let stackedOptions = {
+            maintainAspectRatio: false,
+            aspectRatio: .8,
+            plugins: {
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
+                },
+                legend: {
+                    labels: {
+                        color: '#495057'
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    ticks: {
+                        color: '#495057'
+                    },
+                    grid: {
+                        color: '#ebedef'
+                    }
+                },
+                y: {
+                    stacked: true,
+                    ticks: {
+                        color: '#495057'
+                    },
+                    grid: {
+                        color: '#ebedef'
+                    }
+                }
+            }
+        };
+
+        let multiAxisOptions = {
+            maintainAspectRatio: false,
+            aspectRatio: .8,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#495057'
+                    }
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: true
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: '#495057'
+                    },
+                    grid: {
+                        color: '#ebedef'
+                    }
+                },
+                y: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    ticks: {
+                        min: 0,
+                        max: 100,
+                        color: '#495057'
+                    },
+                    grid: {
+                        color: '#ebedef'
+                    }
+                },
+                y1: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    grid: {
+                        drawOnChartArea: false,
+                        color: '#ebedef'
+                    },
+                    ticks: {
+                        min: 0,
+                        max: 100,
+                        color: '#495057'
+                    }
+                }
+            }
+        };
+
+        return {
+            basicOptions,
+            horizontalOptions,
+            stackedOptions,
+            multiAxisOptions
+        }
     }
-}
-//fin
 
+    const { basicOptions, horizontalOptions, multiAxisOptions, stackedOptions } = getLightTheme();
 
+    return (
+        <div>
+            <div className="card">
+                <h5>Vertical</h5>
+                <Chart type="bar" data={basicData} options={basicOptions} />
+            </div>
 
+            <div className="card">
+                <h5>Horizontal</h5>
+                <Chart type="bar" data={basicData} options={horizontalOptions} />
+            </div>
 
-
-const { basicOptions, horizontalOptions, multiAxisOptions, stackedOptions } = getLightTheme();
-  return (
-  <div className="col-12">
-    <div className="card">
-                <h5>Pacientes Atendidos por el SUS</h5>
+            <div className="card">
+                <h5>Multi Axis</h5>
                 <Chart type="bar" data={multiAxisData} options={multiAxisOptions} />
             </div>
 
-  </div>
-  );
-};
+            <div className="card">
+                <h5>Stacked</h5>
+                <Chart type="bar" data={stackedData} options={stackedOptions} />
+            </div>
+        </div>
+    )
+}
 export default IndicadorSus;
