@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Chart } from 'primereact/chart';
 import clienteAxios from "../config/clienteAxios";
-import "chart.js/auto";
 
 const IndicadorSus = () => {
     const[indicadores, setIndicadores]=useState([])
@@ -12,11 +11,10 @@ const IndicadorSus = () => {
         const listar = async () => {
           try {
             const res = await clienteAxios("/indicadores");
-            setIndicadores(res.data );
-            console.log(res.data);
+            setIndicadores(res.data)
              for(const dataObj of res.data){
                 x.push(dataObj.x);
-                y.push(parseInt(dataObj.y));
+                y.push(dataObj.y);
             }
           } catch (error) {
             console.log(error);
@@ -26,7 +24,7 @@ const IndicadorSus = () => {
       },[]);
 
       const [multiAxisData] = useState({
-        labels: ['prueba', 'prueba2'],
+        labels: x,
         datasets: [{
             label: 'Gestión 2022',
             backgroundColor: [
@@ -39,7 +37,7 @@ const IndicadorSus = () => {
                 '#26A69A'
             ],
             yAxisID: 'y',
-            data: [20,30]
+            data: y
         }]
     });
 //inicio
