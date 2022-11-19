@@ -10,13 +10,17 @@ const AppMenu = () => {
         {
             label: 'Inicio',
             items: [
-                { label: 'SEGUROS A CORTO PLAZO', icon: 'pi pi-list', to: '/' },
-                { label: 'FICHAS', icon: 'pi pi-chart-bar', to: '/fichasmain' },
-                { label: 'DISPONIBILIDAD CAMAS', icon: 'pi pi-chart-bar', to: '/estadistica' },
+                { label: 'SEGUROS A CORTO PLAZO', icon: 'pi pi-list', to: '/' 
+                
+                },
+                { label: 'FICHAS', icon: 'pi pi-ticket', to: '/fichasmain' },
+                { label: 'DISPONIBILIDAD CAMAS', icon: 'pi pi-plus-circle', to: '/estadistica' },
+                { label: 'DASHBOARD', icon: 'pi pi-chart-bar', to: '/dasboard' },
                 { label: 'Login', icon: 'pi pi-fw pi-sign-in', to: '/auth/login' }
             ],
 
         },
+       
         {
             label: 'Menú Privado',
             items: [
@@ -36,7 +40,8 @@ const AppMenu = () => {
                     ]
                 }
             ]
-        }
+        },
+        
     ];
 
     return (

@@ -1,5 +1,8 @@
+import IndicadorSus from "../components/indicadorSus"
 export default function Home() {
     return (
-      <h1>Desde Dasboard</h1>
+      <div className="grid">
+        <IndicadorSus></IndicadorSus>
+      </div>
     )
   }
