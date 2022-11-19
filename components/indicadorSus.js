@@ -25,7 +25,7 @@ const IndicadorSus = () => {
       },[]);
 
       const [multiAxisData] = useState({
-        labels: [],
+        labels: ['prueba', 'prueba2'],
         datasets: [{
             label: 'Gestión 2022',
             backgroundColor: [
@@ -38,7 +38,7 @@ const IndicadorSus = () => {
                 '#26A69A'
             ],
             yAxisID: 'y',
-            data: []
+            data: [20,30]
         }]
     });
 //inicio
