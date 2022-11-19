@@ -7,10 +7,8 @@ import { Button } from "primereact/button";
 import clienteAxios from "../config/clienteAxios";
 import axios from "axios";
 
-
 const WidgetBuscador = () => {
-
-  const [cortoPlazo, setCortoPlazo] = useState(null);//RESULTADOS DE LA BUSQUEDA
+  const [cortoPlazo, setCortoPlazo] = useState(null); //RESULTADOS DE LA BUSQUEDA
   const [key, setKey] = useState("");
   const [key1, setKey1] = useState("");
   const [key2, setKey2] = useState("");
@@ -23,40 +21,46 @@ const WidgetBuscador = () => {
     //listarCortoPlazo();
     const search = async () => {
       try {
-       /* if (key3.length > 0) {
+        /* if (key3.length > 0) {
          // setPermitir(true)
           const res = await clienteAxios('/cortoplazo/buscar', { params: { key3: key3, s1: 1 } });
           setCortoPlazo(res.data);
         } else {*/
-         // setPermitir(false)
-          const res = await clienteAxios('/cortoplazo/buscar', { params: { key: key, key1: key1, key2: key2, key3: key3, s1: 2 } });
-          setCortoPlazo(res.data);
-       // }
+        // setPermitir(false)
+        const res = await clienteAxios("/cortoplazo/buscar", {
+          params: { key: key, key1: key1, key2: key2, key3: key3, s1: 2 },
+        });
+        setCortoPlazo(res.data);
+        // }
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
+    };
 
-    search()
+    search();
   }, [key, key1, key2, key3]);
 
   const handleClick = (e) => {
-    if (e == 'input1') { setKey(''),setKey3('')  };
-    if (e == 'input2') { setKey1(''), setKey3('') };
-    if (e == 'input3') { setKey2(''), setKey3('')  };
-    if (e == 'input4') { setKey3('') };
-    
-
+    if (e == "input1") {
+      setKey(""), setKey3("");
+    }
+    if (e == "input2") {
+      setKey1(""), setKey3("");
+    }
+    if (e == "input3") {
+      setKey2(""), setKey3("");
+    }
+    if (e == "input4") {
+      setKey3("");
+    }
   };
-
 
   const listarCortoPlazo = async () => {
     try {
-      const { data } = await clienteAxios('/cortoplazo');
+      const { data } = await clienteAxios("/cortoplazo");
       setCortoPlazo(data);
-
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
 
     setLoading(false);
@@ -64,56 +68,59 @@ const WidgetBuscador = () => {
 
   const renderHeader = () => {
     return (
-      <div className="flex justify-content-between ">
-        <span className="p-input-icon-left pr-3 w-full">
-          <i className="pi pi-search" />
-          <InputText
-            id="input1"
-            value={key}//{globalFilterValue}
-            onChange={(e) => setKey(e.target.value)}
-            onClick={(e) => handleClick(e.target.id)}
-            className="w-full"
-            placeholder="APELLIDO PATERNO"
-            disabled={permitir}
-          />
-        </span>
-        <span className="p-input-icon-left pr-3 w-full ">
-          <i className="pi pi-search" />
-          <InputText
-            id="input2"
-            value={key1}//{globalFilterValue}
-            onChange={(e) => setKey1(e.target.value)}
-            onClick={(e) => handleClick(e.target.id)}
-            className="w-full"
-            placeholder="APELLIDO MATERNO"
-            disabled={permitir}
-          />
-        </span>
-        <span className="p-input-icon-left pr-3 w-full ">
-          <i className="pi pi-search" />
-          <InputText
-            id="input3"
-            value={key2}//{globalFilterValue}
-            onChange={(e) => setKey2(e.target.value)}
-            onClick={(e) => handleClick(e.target.id)}
-            className="w-full"
-            placeholder="NOMBRES"
-            disabled={permitir}
-          />
-        </span>
-        <span className="p-input-icon-left pr-3 w-full ">
-          <i className="pi pi-search" />
-          <InputText
-            id="input4"
-            value={key3}//{globalFilterValue}
-            onChange={(e) => setKey3(e.target.value)}
-            onClick={(e) => handleClick(e.target.id)}
-            className="w-full"
-            placeholder="CARNET DE IDENTIDAD"
-
-          />
-        </span>
-      </div>
+         <div className="card-container purple-container ">
+          <span className="p-input-icon-left pr-1">
+            <i className="pi pi-search" />
+            <InputText
+              id="input1"
+              value={key} //{globalFilterValue}
+              onChange={(e) => setKey(e.target.value)}
+              onClick={(e) => handleClick(e.target.id)}
+              className="p-inputtext-sm block mb-2"
+              size="100%"
+              placeholder="APELLIDO PATERNO"
+              disabled={permitir}
+            />
+          </span>
+          <span className="p-input-icon-left pr-1">
+            <i className="pi pi-search" />
+            <InputText
+              id="input2"
+              value={key1} //{globalFilterValue}
+              onChange={(e) => setKey1(e.target.value)}
+              onClick={(e) => handleClick(e.target.id)}
+              className="p-inputtext-sm block mb-2"
+              size="100%"
+              placeholder="APELLIDO MATERNO"
+              disabled={permitir}
+            />
+          </span>
+          <span className="p-input-icon-left pr-1">
+            <i className="pi pi-search" />
+            <InputText
+              id="input3"
+              value={key2} //{globalFilterValue}
+              onChange={(e) => setKey2(e.target.value)}
+              onClick={(e) => handleClick(e.target.id)}
+              className="p-inputtext-sm block mb-2"
+              size="100%"
+              placeholder="NOMBRES"
+              disabled={permitir}
+            />
+          </span>
+          <span className="p-input-icon-left pr-1">
+            <i className="pi pi-search" />
+            <InputText
+              id="input4"
+              value={key3} //{globalFilterValue}
+              onChange={(e) => setKey3(e.target.value)}
+              onClick={(e) => handleClick(e.target.id)}
+              className="p-inputtext-sm block mb-2"
+              size="100%"
+              placeholder="CARNET DE IDENTIDAD"
+            />
+          </span>
+        </div>
     );
   };
 
@@ -122,9 +129,13 @@ const WidgetBuscador = () => {
     <div className="grid">
       <div className="col-12">
         <div className="card">
-          <h5>SEGURIDAD SOCIAL A CORTO PLAZO (SSCP)
-            INFORMACIÓN DE LOS ASEGURADOS, PERTENECIENTES A LOS ENTES GESTORES (BASE DE DATOS PRUEBA NO ACTUALIZADO)</h5>
-          <DataTable value={cortoPlazo}
+          <h5>
+            SEGURIDAD SOCIAL A CORTO PLAZO (SSCP) INFORMACIÓN DE LOS ASEGURADOS,
+            PERTENECIENTES A LOS ENTES GESTORES (BASE DE DATOS PRUEBA NO
+            ACTUALIZADO)
+          </h5>
+          <DataTable
+            value={cortoPlazo}
             paginator
             className="p-datatable-customers bg-blue-500"
             rows={20}
@@ -140,16 +151,36 @@ const WidgetBuscador = () => {
             showGridlines
             responsiveLayout="scroll"
           >
-            <Column field="nomb_completo" header="APELLIDOS, NOMBRES" style={{ width: '25%' }}></Column>
-            <Column field="ci" header="CI" style={{ width: '10%' }}></Column>
-            <Column field="seguro" header="SEGURO" style={{ width: '10%' }}></Column>
-            <Column field="ciudad" header="CIUDAD" style={{ width: '20%' }}></Column>
-            <Column field="fecha_nacimiento" header="FECHA NACIMIENTO" style={{ width: '10%' }}></Column>
-            <Column field="matricula" header="MATRICULA" style={{ width: '15%' }}></Column>
+            <Column
+              field="nomb_completo"
+              header="APELLIDOS, NOMBRES"
+              style={{ width: "25%" }}
+            ></Column>
+            <Column field="ci" header="CI" style={{ width: "10%" }}></Column>
+            <Column
+              field="seguro"
+              header="SEGURO"
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="ciudad"
+              header="CIUDAD"
+              style={{ width: "20%" }}
+            ></Column>
+            <Column
+              field="fecha_nacimiento"
+              header="FECHA NACIMIENTO"
+              style={{ width: "10%" }}
+            ></Column>
+            <Column
+              field="matricula"
+              header="MATRICULA"
+              style={{ width: "15%" }}
+            ></Column>
           </DataTable>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 
