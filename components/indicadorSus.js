@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Chart } from 'primereact/chart';
 import clienteAxios from "../config/clienteAxios";
+import "chart.js/auto";
 
 const IndicadorSus = () => {
     const[indicadores, setIndicadores]=useState([])
