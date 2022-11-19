@@ -38,7 +38,7 @@ const IndicadorSus = () => {
                 '#26A69A'
             ],
             yAxisID: 'y',
-            data: y
+            data: []
         }]
     });
 //inicio
