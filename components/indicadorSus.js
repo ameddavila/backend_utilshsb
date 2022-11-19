@@ -25,7 +25,7 @@ const IndicadorSus = () => {
       },[]);
 
       const [multiAxisData] = useState({
-        labels: x,
+        labels: [],
         datasets: [{
             label: 'Gestión 2022',
             backgroundColor: [
