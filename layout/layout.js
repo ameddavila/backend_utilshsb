@@ -17,6 +17,8 @@ const Layout = (props) => {
     const sidebarRef = useRef(null);
     const contextPath = getConfig().publicRuntimeConfig.contextPath;
     const router = useRouter();
+
+
     const [bindMenuOutsideClickListener, unbindMenuOutsideClickListener] = useEventListener({
         type: 'click',
         listener: (event) => {

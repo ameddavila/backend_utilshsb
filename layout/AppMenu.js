@@ -1,60 +1,58 @@
-import getConfig from 'next/config';
-import React, { useContext } from 'react';
-import AppMenuitem from './AppMenuitem';
-import { LayoutContext } from './context/layoutcontext';
-import { MenuProvider } from './context/menucontext';
-import Link from 'next/link';
+import React, { useEffect, useState } from "react";
+import AppMenuitem from "./AppMenuitem";
+import { MenuProvider } from "./context/menucontext";
+import useAuth from "../hooks/useAuth";
+import clienteAxios from "../config/clienteAxios";
+
 
 const AppMenu = () => {
-    const model = [
-        {
-            label: 'Inicio',
-            items: [
-                { label: 'SEGUROS A CORTO PLAZO', icon: 'pi pi-list', to: '/' 
-                
-                },
-                { label: 'FICHAS', icon: 'pi pi-ticket', to: '/fichasmain' },
-                { label: 'DISPONIBILIDAD CAMAS', icon: 'pi pi-plus-circle', to: '/estadistica' },
-                { label: 'DASHBOARD', icon: 'pi pi-chart-bar', to: '/dasboard'  },
-                { label: 'Login', icon: 'pi pi-fw pi-sign-in', to: '/auth/login' }
-            ],
-
-        },
-       
-        {
-            label: 'Menú Privado',
-            items: [
-                {
-                    label: 'Farmacia',
-                    icon: 'pi pi-fw pi-bookmark',
-                    items: [
-                        { label: 'Producción', icon: 'pi pi-fw pi-bookmark' },
-                        { label: 'Internacion Convenios', icon: 'pi pi-fw pi-bookmark' }
-                    ]
-                },
-                {
-                    label: 'Admisiones',
-                    icon: 'pi pi-fw pi-bookmark',
-                    items: [
-                        { label: 'Reporte Fichas', icon: 'pi pi-fw pi-bookmark' }
-                    ]
-                }
-            ]
-        },
-        
-    ];
-
-    return (
-        <MenuProvider>
-            <ul className="layout-menu">
-                {model.map((item, i) => {
-                    return !item.seperator ? <AppMenuitem item={item} root={true} index={i} key={item.label} /> : <li className="menu-separator"></li>;
-                })}
+  const { auth } = useAuth();
+  const [menuUser, setMenuUser] = useState([]);
 
 
-            </ul>
-        </MenuProvider>
-    );
+  useEffect(() => {
+
+    const getMenu = async () => {
+      try {
+        console.log(auth.rol)    
+        const { data } = await clienteAxios(auth.rol === undefined ? `/helpers/menu/1` : `/helpers/menu/${auth.rol}`);
+        eliminarVacios(data);
+        setMenuUser(data);
+      } catch (error) {
+        console.log('Error Serv',error);
+      }
+    };
+    getMenu();
+  }, [auth]);
+
+  //funcion para quitar nodos vacios en el JSON de los items 
+  function eliminarVacios(jsonx) {
+    for (var clave in jsonx) {
+      if (typeof jsonx[clave] == "string") {
+        if (jsonx[clave] == null || jsonx[clave] == "") {
+          delete jsonx[clave];
+        }
+      } else if (typeof jsonx[clave] == "object") {
+        if (clave === "items" && jsonx[clave].length == "") {
+          delete jsonx[clave];
+        }
+        eliminarVacios(jsonx[clave]);
+      }
+    }
+  }
+  return (
+    <MenuProvider>
+      <ul className="layout-menu">
+        {menuUser.map((item, subitems, i) => {
+          return !item.seperator ? (
+            <AppMenuitem item={item} root={true} index={i} key={item.label} />
+          ) : (
+            <li className="menu-separator"></li>
+          );
+        })}
+      </ul>
+    </MenuProvider>
+  );
 };
 
 export default AppMenu;

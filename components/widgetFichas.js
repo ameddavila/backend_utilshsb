@@ -109,11 +109,12 @@ const WidgetFichas = () => {
           <div className="text-center">
             <span className="text-900 text-ml font-bold">
               {" "}
-              FICHAS DISPONIBLES PARA EL:{" "}
+              FICHAS DISPONIBLES PARA HOY:{" "}
             </span>
             <span className="text-4xl font-bold text-red-500">
-              {" "}
-              <Moment format="DD/MM/YYYY">{today}</Moment>
+              {// <Moment format="DD/MM/YYYY">{today}</Moment>
+              }
+             
             </span>
           </div>
           <DataView

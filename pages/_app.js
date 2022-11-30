@@ -1,28 +1,33 @@
 //import '../styles/globals.css'
-import React from 'react';
-import { LayoutProvider } from '../layout/context/layoutcontext';
-import Layout from '../layout/layout';
-import 'primereact/resources/primereact.css';
-import 'primeflex/primeflex.css';
-import 'primeicons/primeicons.css';
-import '../styles/layout/layout.scss';
+import React from "react";
+import { LayoutProvider } from "../layout/context/layoutcontext";
+import { AuthProvider } from "../layout/context/authcontext";
+import Layout from "../layout/layout";
+import "primereact/resources/primereact.css";
+import "primeflex/primeflex.css";
+import "primeicons/primeicons.css";
+import "../styles/layout/layout.scss";
 
 function MyApp({ Component, pageProps }) {
   if (Component.getLayout) {
     return (
-      <LayoutProvider>
-        {Component.getLayout(<Component {...pageProps} />)}
-      </LayoutProvider>
-    )
+      <AuthProvider>
+        <LayoutProvider>
+          {Component.getLayout(<Component {...pageProps} />)}
+        </LayoutProvider>
+      </AuthProvider>
+    );
   } else {
     return (
-      <LayoutProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </LayoutProvider>
+      <AuthProvider>
+        <LayoutProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </LayoutProvider>
+      </AuthProvider>
     );
   }
 }
 
-export default MyApp
+export default MyApp;

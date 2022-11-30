@@ -27,8 +27,9 @@ const WidgetGeneral = () => {
     return (
         <div className='card'>
             <div>
-            <span className='text-900 text-4xl'> FICHAS DISPONIBLES PARA EL: </span>
-            <span className='text-6xl font-bold text-red-500'> <Moment format="DD/MM/YYYY">{today}</Moment></span>
+            <span className='text-900 text-4xl'> FICHAS DISPONIBLES PARA HOY: </span>
+            <span className='text-6xl font-bold text-red-500'> {//<Moment format="DD/MM/YYYY">{today}</Moment>
+            }</span>
             </div>
             <div className="grid">
                 {medico.map(medico => <div className="col-12 md:col-6 lg:col-3 mt-3" key={medico.medico}>
