@@ -5,7 +5,7 @@ import { Button } from "primereact/button";
 import { Password } from "primereact/password";
 import { InputText } from "primereact/inputtext";
 
-export default function addUser() {
+export default function AddUser() {
   const [password, setPassword] = useState("");
   const [loginUsuario, setLoginUsuario] = useState("");
   const [userSiaf, setUserSiaf] = useState('');
