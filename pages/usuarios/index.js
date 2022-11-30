@@ -7,7 +7,7 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import Router from "next/router";
 
-export default function usuariosSiaf() {
+export default function UsuariosSiaf() {
   const [usuarioSiaf, setUsuarioSiaf] = useState(null);
   const [globalFilterValue, setGlobalFilterValue] = useState("");
   const [loading, setLoading] = useState(true);
