@@ -15,7 +15,7 @@ const AppMenu = () => {
     const getMenu = async () => {
       try {
         console.log(auth.rol)    
-        const { data } = await clienteAxios(`/helpers/menu/1`);
+        const { data } = await clienteAxios('/helpers/menu/1');
         eliminarVacios(data);
         setMenuUser(data);
       } catch (error) {
