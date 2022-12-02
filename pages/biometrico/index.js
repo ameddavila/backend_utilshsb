@@ -8,18 +8,18 @@ import { Button } from "primereact/button";
 import Router from "next/router";
 
 export default function UsuariosSiaf() {
-  const [usuarioSiaf, setUsuarioSiaf] = useState(null);
+  const [personalBio, setPersonalBio] = useState(null);
   const [globalFilterValue, setGlobalFilterValue] = useState("");
   const [loading, setLoading] = useState(true);
   const [cargando, setCargado] = useState(true);
 
   const [filters, setFilters] = useState({
-    codigo: { value: null, matchMode: FilterMatchMode.EQUALS },
-    usuario: {
+    ndoc: { value: null, matchMode: FilterMatchMode.EQUALS },
+    nombre: {
       operator: FilterOperator.AND,
       constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }],
     },
-    identificacion: {
+    cargo: {
       operator: FilterOperator.AND,
       constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }],
     },
@@ -28,19 +28,9 @@ export default function UsuariosSiaf() {
   useEffect(() => {
     const listar = async () => {
       try {
-        const token = localStorage.getItem("token");
-        if (!token) {
-          setCargado(false);
-          return;
-        }
-        const config = {
-          headers: {
-            "Content-Type": "aplication/json",
-            Authorization: `Bearer ${token}`,
-          },
-        };
-        const data = await clienteAxios("/usuarios/usersiaf", config);
-        setUsuarioSiaf(data.data);
+        const data = await clienteAxios("/biometrico");
+        console.log(data.data)
+        setPersonalBio(data.data);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -52,18 +42,19 @@ export default function UsuariosSiaf() {
 
   const initFilters = () => {
     setFilters({
-      global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-      codigo: {
-        operator: FilterOperator.AND,
-        constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }],
-      },
-      identificacion: { value: null, matchMode: FilterMatchMode.CONTAINS },
-      usuario: { value: null, matchMode: FilterMatchMode.EQUALS },
-    });
+        global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+        ndoc: {
+          operator: FilterOperator.AND,
+          constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }],
+        },
+        nombre: { value: null, matchMode: FilterMatchMode.CONTAINS },
+        cargo: { value: null, matchMode: FilterMatchMode.EQUALS },
+      });
     setGlobalFilterValue("");
   };
 
   const onGlobalFilterChange = (e) => {
+    //console.log(e.target.value)
     const value = e.target.value;
     let _filters = { ...filters };
     _filters["global"].value = value;
@@ -75,7 +66,7 @@ export default function UsuariosSiaf() {
   const renderHeader = () => {
     return (
       <div className="flex justify-content-between">
-        <h5 className="mx-0 my-1">Usuarios del Sistema SIAF-SICE</h5>
+        <h5 className="mx-0 my-1">Personal del Biometrico</h5>
         <span className="p-input-icon-left">
           <i className="pi pi-search" />
           <InputText
@@ -89,15 +80,11 @@ export default function UsuariosSiaf() {
   };
   const buttonsSelected = (rowData) => {
     return (
-      <div className="flex align-items-center justify-content-center w-4rem h-4rem">
-        <Button
-          type="button"
-          icon="pi pi-plus"
-          //label="Agregar"
-          className="p-button-rounded"
-          onClick={() => selectUser(rowData)}
-        />
-      </div>
+        <span className="p-buttonset">
+        <Button label="Agregar" icon="pi pi-check" />
+        <Button label="Borrar" icon="pi pi-trash" />
+        <Button label="PDF" icon="pi-file-pdf" />
+    </span>
     );
   };
 
@@ -110,45 +97,52 @@ export default function UsuariosSiaf() {
     <div className="datatable-doc-demo">
       <div className="card">
         <DataTable
-          value={usuarioSiaf}
+          value={personalBio}
           paginator
           rows={20}
-          dataKey="codigo"
+          dataKey="ndoc"
           filters={filters}
           filterDisplay="menu"
           loading={loading}
-          responsiveLayout="scroll"
           size="small"
-          globalFilterFields={["codigo", "identificacion", "usuario"]}
+          showGridlines
+          responsiveLayout="stack" breakpoint="960px"
+          globalFilterFields={["ndoc", "nombre", "cargo"]}
           header={header}
           emptyMessage="No se encontro el Personal"
         >
           <Column
-            field="codigo"
-            header="Codigo"
+            field="ndoc"
+            header="Nº Documento"
             sortable
-            style={{ minWidth: "14rem" }}
+            style={{width:'10%'}}
           />
           <Column
-            field="identificacion"
-            header="Identificacion"
+            field="nombre"
+            header="Apellidos, Nombre"
             sortable
-            style={{ minWidth: "14rem" }}
+            style={{width:'20%'}}
           />
           <Column
-            field="usuario"
-            header="Usuario"
+            field="cargo"
+            header="Cargo"
             sortable
-            style={{ minWidth: "14rem" }}
+            style={{width:'20%'}}
+          />
+           <Column
+            field="nmarcado"
+            header="NºMarcado"
+            sortable
+            style={{width:'5%'}}
+
           />
           <Column
-            field="acciones"
-            header="Acciones"
-            body={buttonsSelected.bind(usuarioSiaf)}
-            frozen
-            style={{ textAlign: "center", width: "10rem" }}
+            body={buttonsSelected.bind(personalBio)}
+           // style={{ textAlign: "center", width: "10rem" }}
+           style={{width:'25%'}}
             alignFrozen="right"
           ></Column>
+         
         </DataTable>
       </div>
     </div>
