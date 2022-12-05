@@ -18,6 +18,8 @@
     "axios": "^0.27.2",
     "chart.js": "^3.3.2",
     "dotenv": "^16.0.1",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.5.28",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.38",
     "next": "12.3.1",
