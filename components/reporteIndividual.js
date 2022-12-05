@@ -24,7 +24,7 @@ const WidgetReporteIndividual = ({ props }) => {
 
   useEffect(() => {
     setFun(props[0]);
-  }, []);
+  }, [props]);
 
   let { NOMBRE, CI } = fun;
 
