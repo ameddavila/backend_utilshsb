@@ -21,6 +21,7 @@ export default function AddUser() {
   const [selectRol, setSelectRol] = useState({});
   const { id } = route.query;
   const toastBR = useRef(null);
+  
   const toastBC = useRef(null);
 
   useEffect(() => {
