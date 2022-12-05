@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { FilterMatchMode, FilterOperator } from "primereact/api";
-import clienteAxios from "../../config/clienteAxios";
+import clienteAxios from "../../../config/clienteAxios";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import Router from "next/router";
-import Link from "next/link";
 
-export default function UsuariosSiaf() {
+export default function ReportesGeneral() {
   const [personalBio, setPersonalBio] = useState(null);
   const [globalFilterValue, setGlobalFilterValue] = useState("");
   const [loading, setLoading] = useState(true);
@@ -73,6 +72,7 @@ export default function UsuariosSiaf() {
             value={globalFilterValue}
             onChange={onGlobalFilterChange}
             placeholder="Buscar Personal"
+            size={50}
           />
         </span>
       </div>
@@ -81,14 +81,13 @@ export default function UsuariosSiaf() {
   const buttonsSelected = (rowData) => {
     return (
       <span className="p-buttonset">
-        <Button label="Agregar" icon="pi pi-check" />
-        <Button label="Quitar" icon="pi pi-trash" />
+        <Button label="Reportes" icon="pi pi-file-pdf" onClick={() => selectReport(rowData)}/>
       </span>
     );
   };
 
   const selectReport = (data) => {
-    Router.push('/reportes');
+    Router.push(`/biometrico/reportes/individual/${data._id}`);
   };
 
   const header = renderHeader();
@@ -126,6 +125,12 @@ export default function UsuariosSiaf() {
           <Column
             field="cargo"
             header="Cargo"
+            sortable
+            style={{ width: "20%" }}
+          />
+          <Column
+            field="bio"
+            header="BIO"
             sortable
             style={{ width: "20%" }}
           />
